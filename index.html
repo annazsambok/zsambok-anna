@@ -13,37 +13,41 @@
       color: #222;
     }
 
-    /* HERO SZEKCIÓ – csak a neved */
+    /* HERO SZEKCIÓ – név + ikonokkal elérhetőség */
     .hero {
       background: #0d0d0d; /* fekete */
       color: #f3e9dd;      /* bézs */
-      padding: 90px 20px 50px; /* kisebb fejléc */
+      padding: 80px 20px 60px;
       text-align: center;
     }
 
     .hero h1 {
       font-size: 3rem;
       font-family: "Brush Script MT", cursive;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
-    /* KAPCSOLAT – neved alatt, mobilon sem törik szét */
+    /* Elérhetőségek ikonokkal */
     .contact {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #f3e9dd;
+      display: inline-block;
       text-align: center;
-      margin-top: 15px;
-      font-size: 1.05rem;
-      color: #333;
-      white-space: nowrap; /* NEM törik szét */
     }
 
-    /* Mobilon kisebb betűméret, hogy biztosan egy sorban maradjon */
+    .contact span {
+      display: block; /* külön sorok, de középen */
+      margin: 4px 0;
+    }
+
     @media (max-width: 600px) {
       .contact {
-        font-size: 0.85rem;
+        font-size: 0.95rem; /* mobilon kisebb */
       }
     }
 
-    /* KATEGÓRIA GOMBOK – mobilbarát, nem csúszik össze */
+    /* KATEGÓRIA GOMBOK – mobilbarát */
     nav {
       text-align: center;
       margin: 30px 0;
@@ -70,7 +74,7 @@
       background: #333;
     }
 
-    /* MASONRY (random hatású) GALÉRIA */
+    /* MASONRY GALÉRIA */
     .gallery {
       column-count: 3;
       column-gap: 20px;
@@ -83,7 +87,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 18px rgba(0,0,0,0.15);
       transition: transform 0.3s ease;
-      pointer-events: none; /* nem kattintható */
+      pointer-events: none;
     }
 
     .gallery img:hover {
@@ -106,19 +110,18 @@
 
 <body>
 
-  <!-- HERO – fekete sáv, csak a neved -->
+  <!-- HERO – név + ikonokkal elérhetőség -->
   <div class="hero">
     <h1>Zsámbok Anna</h1>
+
+    <div class="contact">
+      <span>📧 Email: <strong>zsambokanna@gmail.com</strong></span>
+      <span>📱 Telefon: <strong>+36 30 743 3533</strong></span>
+      <span>📷 Instagram: <strong>@zsambokanna</strong></span>
+    </div>
   </div>
 
-  <!-- KAPCSOLAT – neved alatt, mobilon sem törik szét -->
-  <div class="contact">
-    Email: <strong>zsambokanna@gmail.com</strong> • 
-    Telefon: <strong>+36 30 743 3533</strong> • 
-    Instagram: <strong>zsambokanna</strong>
-  </div>
-
-  <!-- KATEGÓRIÁK – választható menü -->
+  <!-- KATEGÓRIÁK -->
   <nav>
     <button onclick="filterImages('all')">Összes</button>
     <button onclick="filterImages('kezilabda')">Kézilabda</button>
@@ -127,7 +130,7 @@
     <button onclick="filterImages('eskuvo')">Esküvő</button>
   </nav>
 
-  <!-- GALÉRIA – random hatású elrendezés -->
+  <!-- GALÉRIA -->
   <section class="gallery">
 
     <!-- Kézilabda -->
