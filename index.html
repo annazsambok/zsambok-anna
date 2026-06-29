@@ -13,25 +13,11 @@
       color: #222;
     }
 
-    /* LOGÓ A BAL FELSŐ SAROKBAN */
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 25px;
-      font-family: "Brush Script MT", cursive;
-      font-size: 2rem;
-      color: #f3e9dd;
-      background: #0d0d0d;
-      padding: 10px 18px;
-      border-radius: 8px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
-    }
-
-    /* HERO SZEKCIÓ */
+    /* HERO SZEKCIÓ – csak a neved */
     .hero {
       background: #0d0d0d; /* fekete */
       color: #f3e9dd;      /* bézs */
-      padding: 140px 20px 60px; /* nagyobb felső padding a logó miatt */
+      padding: 120px 20px 60px;
       text-align: center;
     }
 
@@ -41,7 +27,7 @@
       margin-bottom: 10px;
     }
 
-    /* KAPCSOLAT */
+    /* KAPCSOLAT – neved alatt */
     .contact {
       text-align: center;
       margin-top: 15px;
@@ -49,29 +35,34 @@
       color: #333;
     }
 
-    /* KATEGÓRIA GOMBOK */
+    /* KATEGÓRIA GOMBOK – mobilbarát, nem csúszik össze */
     nav {
       text-align: center;
       margin: 30px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
     }
 
     nav button {
       background: #0d0d0d;
       color: #f3e9dd;
       border: none;
-      padding: 10px 20px;
-      margin: 0 10px;
+      padding: 12px 22px;
       border-radius: 25px;
       cursor: pointer;
-      font-size: 0.95rem;
+      font-size: 1rem;
       transition: all 0.3s ease;
+      min-width: 120px;
+      text-align: center;
     }
 
     nav button:hover {
       background: #333;
     }
 
-    /* MASONRY (random hatású) */
+    /* MASONRY (random hatású) GALÉRIA */
     .gallery {
       column-count: 3;
       column-gap: 20px;
@@ -107,24 +98,19 @@
 
 <body>
 
-  <!-- LOGÓ -->
-  <div class="logo">
-    Zsámbok Anna
-  </div>
-
-  <!-- HERO -->
+  <!-- HERO – fekete sáv, csak a neved -->
   <div class="hero">
     <h1>Zsámbok Anna</h1>
   </div>
 
-  <!-- KAPCSOLAT -->
+  <!-- KAPCSOLAT – neved alatt -->
   <div class="contact">
     Email: <strong>zsambokanna@gmail.com</strong> • 
     Telefon: <strong>+36 30 743 3533</strong> • 
     Instagram: <strong>@zsambokanna</strong>
   </div>
 
-  <!-- KATEGÓRIÁK -->
+  <!-- KATEGÓRIÁK – választható menü -->
   <nav>
     <button onclick="filterImages('all')">Összes</button>
     <button onclick="filterImages('kezilabda')">Kézilabda</button>
@@ -133,7 +119,7 @@
     <button onclick="filterImages('eskuvo')">Esküvő</button>
   </nav>
 
-  <!-- GALÉRIA -->
+  <!-- GALÉRIA – random hatású elrendezés -->
   <section class="gallery">
 
     <!-- Kézilabda -->
