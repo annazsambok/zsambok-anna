@@ -17,7 +17,7 @@
     .hero {
       background: #0d0d0d; /* fekete */
       color: #f3e9dd;      /* bézs */
-      padding: 120px 20px 60px;
+      padding: 90px 20px 50px; /* kisebb fejléc */
       text-align: center;
     }
 
@@ -27,12 +27,20 @@
       margin-bottom: 10px;
     }
 
-    /* KAPCSOLAT – neved alatt */
+    /* KAPCSOLAT – neved alatt, mobilon sem törik szét */
     .contact {
       text-align: center;
       margin-top: 15px;
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: #333;
+      white-space: nowrap; /* NEM törik szét */
+    }
+
+    /* Mobilon kisebb betűméret, hogy biztosan egy sorban maradjon */
+    @media (max-width: 600px) {
+      .contact {
+        font-size: 0.85rem;
+      }
     }
 
     /* KATEGÓRIA GOMBOK – mobilbarát, nem csúszik össze */
@@ -103,7 +111,7 @@
     <h1>Zsámbok Anna</h1>
   </div>
 
-  <!-- KAPCSOLAT – neved alatt -->
+  <!-- KAPCSOLAT – neved alatt, mobilon sem törik szét -->
   <div class="contact">
     Email: <strong>zsambokanna@gmail.com</strong> • 
     Telefon: <strong>+36 30 743 3533</strong> • 
