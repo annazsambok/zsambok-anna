@@ -4,36 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zsámbok Anna – Sportfotó Portfólió</title>
+
   <style>
     body {
       margin: 0;
       font-family: "Helvetica Neue", Arial, sans-serif;
-      background-color: #fff;
+      background: #fff;
       color: #222;
     }
+
     header {
       text-align: center;
-      padding: 40px 0 20px;
-      font-size: 2rem;
+      padding: 40px 0 10px;
+      font-size: 2.4rem;
       font-weight: 600;
       font-family: "Brush Script MT", cursive;
     }
+
     nav {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
-    nav a {
-      text-decoration: none;
-      color: #555;
+
+    nav button {
+      background: none;
+      border: none;
+      font-size: 1rem;
       margin: 0 15px;
+      cursor: pointer;
+      color: #555;
       font-weight: 500;
     }
+
+    nav button:hover {
+      color: #000;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 10px;
       padding: 20px;
     }
+
     .gallery img {
       width: 100%;
       height: auto;
@@ -41,6 +54,7 @@
       border-radius: 4px;
       transition: transform 0.3s ease;
     }
+
     .gallery img:hover {
       transform: scale(1.03);
     }
@@ -48,20 +62,50 @@
 </head>
 
 <body>
+
   <header>Zsámbok Anna</header>
+
   <nav>
-    <a href="#">Sportfotó</a>
-    <a href="#">Kézilabda</a>
-    <a href="#">Diákolimpia</a>
-    <a href="#">Rendezvények</a>
-    <a href="#">Esküvő</a>
+    <button onclick="filterImages('all')">Összes</button>
+    <button onclick="filterImages('kezilabda')">Kézilabda</button>
+    <button onclick="filterImages('diakolimpia')">Diákolimpia</button>
+    <button onclick="filterImages('rendezveny')">Rendezvények</button>
+    <button onclick="filterImages('eskuvo')">Esküvő</button>
   </nav>
 
   <section class="gallery">
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Kézilabda">
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Diákolimpia">
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Rendezvény">
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Esküvő">
+
+    <!-- Kézilabda -->
+    <img src="KÉP_LINK" class="kezilabda">
+    <img src="KÉP_LINK" class="kezilabda">
+
+    <!-- Diákolimpia -->
+    <img src="KÉP_LINK" class="diakolimpia">
+    <img src="KÉP_LINK" class="diakolimpia">
+
+    <!-- Rendezvény -->
+    <img src="KÉP_LINK" class="rendezveny">
+    <img src="KÉP_LINK" class="rendezveny">
+
+    <!-- Esküvő -->
+    <img src="KÉP_LINK" class="eskuvo">
+    <img src="KÉP_LINK" class="eskuvo">
+
   </section>
+
+  <script>
+    function filterImages(category) {
+      const images = document.querySelectorAll('.gallery img');
+
+      images.forEach(img => {
+        if (category === 'all') {
+          img.style.display = 'block';
+        } else {
+          img.style.display = img.classList.contains(category) ? 'block' : 'none';
+        }
+      });
+    }
+  </script>
+
 </body>
 </html>
