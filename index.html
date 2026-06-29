@@ -13,18 +13,55 @@
       color: #222;
     }
 
-    /* HERO – csak a név, alacsonyabb */
+    /* HERO – név + egy soros elérhetőség */
     .hero {
       background: #0d0d0d;
       color: #f3e9dd;
-      padding: 60px 20px 40px;
+      padding: 70px 20px 45px; /* picit magasabb */
       text-align: center;
     }
 
     .hero h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-family: "Brush Script MT", cursive;
-      margin: 0;
+      margin-bottom: 18px; /* kicsit fentebb */
+    }
+
+    /* Egy soros elérhetőség ikonokkal */
+    .contact-line {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 22px; /* elegáns távolság */
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      font-size: 0.85rem;
+      color: #f3e9dd;
+    }
+
+    .contact-line span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .contact-line svg {
+      width: 16px;
+      height: 16px;
+      stroke: #f3e9dd;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    @media (max-width: 600px) {
+      .contact-line {
+        font-size: 0.75rem; /* mobilon kisebb, hogy kiférjen */
+        gap: 16px;
+      }
+      .contact-line svg {
+        width: 14px;
+        height: 14px;
+      }
     }
 
     /* KATEGÓRIA GOMBOK */
@@ -80,80 +117,16 @@
     @media (max-width: 600px) {
       .gallery { column-count: 1; }
     }
-
-    /* LÁBLÉC – egy sor, fehér körvonalas ikonokkal */
-    footer {
-      background: #0d0d0d;
-      color: #f3e9dd;
-      padding: 12px 10px;
-      text-align: center;
-      font-size: 0.85rem;
-    }
-
-    footer .footer-line {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: nowrap;
-      white-space: nowrap;
-    }
-
-    footer svg {
-      width: 16px;
-      height: 16px;
-      stroke: #f3e9dd;
-      fill: none;
-      stroke-width: 2;
-      vertical-align: middle;
-    }
-
-    @media (max-width: 600px) {
-      footer {
-        font-size: 0.75rem;
-      }
-      footer svg {
-        width: 14px;
-        height: 14px;
-      }
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- HERO -->
+  <!-- HERO – név + egy soros elérhetőség -->
   <div class="hero">
     <h1>Zsámbok Anna</h1>
-  </div>
 
-  <!-- MENÜ -->
-  <nav>
-    <button onclick="filterImages('all')">Összes</button>
-    <button onclick="filterImages('kezilabda')">Kézilabda</button>
-    <button onclick="filterImages('diakolimpia')">Diákolimpia</button>
-    <button onclick="filterImages('rendezveny')">Rendezvények</button>
-    <button onclick="filterImages('eskuvo')">Esküvő</button>
-  </nav>
-
-  <!-- GALÉRIA -->
-  <section class="gallery">
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="kezilabda">
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="kezilabda">
-
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="diakolimpia">
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="diakolimpia">
-
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="rendezveny">
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="rendezveny">
-
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="eskuvo">
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="eskuvo">
-  </section>
-
-  <!-- LÁBLÉC – egy sor, fehér körvonalas ikonokkal -->
-  <footer>
-    <div class="footer-line">
+    <div class="contact-line">
 
       <!-- Email ikon -->
       <span>
@@ -183,7 +156,31 @@
       </span>
 
     </div>
-  </footer>
+  </div>
+
+  <!-- MENÜ -->
+  <nav>
+    <button onclick="filterImages('all')">Összes</button>
+    <button onclick="filterImages('kezilabda')">Kézilabda</button>
+    <button onclick="filterImages('diakolimpia')">Diákolimpia</button>
+    <button onclick="filterImages('rendezveny')">Rendezvények</button>
+    <button onclick="filterImages('eskuvo')">Esküvő</button>
+  </nav>
+
+  <!-- GALÉRIA -->
+  <section class="gallery">
+    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="kezilabda">
+    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="kezilabda">
+
+    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="diakolimpia">
+    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="diakolimpia">
+
+    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="rendezveny">
+    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="rendezveny">
+
+    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="eskuvo">
+    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="eskuvo">
+  </section>
 
   <script>
     function filterImages(category) {
