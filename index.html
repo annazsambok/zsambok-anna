@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: "Helvetica Neue", Arial, sans-serif;
-      background: #f3e9dd; /* bézs */
+      background: #f3e9dd;
       color: #222;
     }
 
@@ -17,14 +17,14 @@
     .hero {
       background: #0d0d0d;
       color: #f3e9dd;
-      padding: 70px 20px 45px; /* picit magasabb */
+      padding: 70px 20px 45px;
       text-align: center;
     }
 
     .hero h1 {
       font-size: 3rem;
       font-family: "Brush Script MT", cursive;
-      margin-bottom: 18px; /* kicsit fentebb */
+      margin-bottom: 18px;
     }
 
     /* Egy soros elérhetőség ikonokkal */
@@ -32,7 +32,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 22px; /* elegáns távolság */
+      gap: 22px;
       flex-wrap: nowrap;
       white-space: nowrap;
       font-size: 0.85rem;
@@ -55,7 +55,7 @@
 
     @media (max-width: 600px) {
       .contact-line {
-        font-size: 0.75rem; /* mobilon kisebb, hogy kiférjen */
+        font-size: 0.75rem;
         gap: 16px;
       }
       .contact-line svg {
@@ -117,18 +117,60 @@
     @media (max-width: 600px) {
       .gallery { column-count: 1; }
     }
+
+    /* RÓLAM SZEKCIÓ */
+    .about {
+      display: none;
+      padding: 40px 20px 80px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .about-content {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .about img {
+      width: 320px;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #ddd; /* keret helye */
+    }
+
+    .about-text {
+      max-width: 500px;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 700px) {
+      .about-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .about img {
+        width: 260px;
+        height: 380px;
+      }
+      .about-text {
+        max-width: 90%;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- HERO – név + egy soros elérhetőség -->
+  <!-- HERO -->
   <div class="hero">
     <h1>Zsámbok Anna</h1>
 
     <div class="contact-line">
-
-      <!-- Email ikon -->
       <span>
         <svg viewBox="0 0 24 24">
           <path d="M4 4h16v16H4z"/>
@@ -137,7 +179,6 @@
         zsambokanna@gmail.com
       </span>
 
-      <!-- Telefon ikon -->
       <span>
         <svg viewBox="0 0 24 24">
           <path d="M6 2l4 2-2 4c1 2 3 4 5 5l4-2 2 4c-1 1-3 3-5 3-6 0-12-6-12-12 0-2 2-4 3-5z"/>
@@ -145,7 +186,6 @@
         +36 30 743 3533
       </span>
 
-      <!-- Instagram ikon -->
       <span>
         <svg viewBox="0 0 24 24">
           <rect x="3" y="3" width="18" height="18" rx="5"/>
@@ -154,7 +194,6 @@
         </svg>
         zsambokanna
       </span>
-
     </div>
   </div>
 
@@ -165,10 +204,11 @@
     <button onclick="filterImages('diakolimpia')">Diákolimpia</button>
     <button onclick="filterImages('rendezveny')">Rendezvények</button>
     <button onclick="filterImages('eskuvo')">Esküvő</button>
+    <button onclick="showAbout()">Rólam</button>
   </nav>
 
   <!-- GALÉRIA -->
-  <section class="gallery">
+  <section class="gallery" id="gallery">
     <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="kezilabda">
     <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="kezilabda">
 
@@ -182,12 +222,41 @@
     <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="eskuvo">
   </section>
 
+  <!-- RÓLAM -->
+  <section class="about" id="about">
+    <div class="about-content">
+
+      <!-- PORTRÉ KERET -->
+      <img src="" alt="Portré helye – ide töltsd fel a képed">
+
+      <!-- BEMUTATKOZÁS -->
+      <div class="about-text">
+        <p>2018-ban, gimnazistaként kezdtem el fotózni Egerben, először iskolai rendezvényeken. Később önkéntesként fotóztam a Diákolimpia országos döntőjén, majd egyre több egri eseményen is jelen voltam fotósként.</p>
+
+        <p>Az egyetem alatt már az MDSZ hivatalos szerződésével fotóztam a Diákolimpia országos döntőit, és 2025 óta az ÓAM-ÓZDI KC kézilabda csapat hivatalos sajtós-médiása vagyok: fotózom a mérkőzéseket és kezelem a közösségi média felületeiket.</p>
+
+        <p>Az elmúlt időszakban esküvőket is fotóztam, és egyre jobban érdekel a koncertfotózás, valamint mindenféle rendezvény- és sportfotózás. Ez a munkám, a hobbim, a szenvedélyem — a fotózás az életem része.</p>
+
+        <p>Jelenleg egy Canon R6 Mark II géppel dolgozom.</p>
+      </div>
+
+    </div>
+  </section>
+
   <script>
     function filterImages(category) {
+      document.getElementById("about").style.display = "none";
+      document.getElementById("gallery").style.display = "block";
+
       const images = document.querySelectorAll('.gallery img');
       images.forEach(img => {
         img.style.display = (category === 'all' || img.classList.contains(category)) ? 'block' : 'none';
       });
+    }
+
+    function showAbout() {
+      document.getElementById("gallery").style.display = "none";
+      document.getElementById("about").style.display = "block";
     }
   </script>
 
