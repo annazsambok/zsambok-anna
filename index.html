@@ -3,21 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zsámbok Anna – Sportfotó Portfólió</title>
+  <title>Zsámbok Anna – Fotográfus</title>
 
   <style>
     body {
       margin: 0;
       font-family: "Helvetica Neue", Arial, sans-serif;
-      background: #f3e9dd; /* bézs háttér */
+      background: #f3e9dd; /* bézs */
       color: #222;
+    }
+
+    /* LOGÓ A BAL FELSŐ SAROKBAN */
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 25px;
+      font-family: "Brush Script MT", cursive;
+      font-size: 1.8rem;
+      color: #f3e9dd;
+      background: #0d0d0d;
+      padding: 10px 18px;
+      border-radius: 8px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    }
+
+    .logo small {
+      display: block;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.75rem;
+      margin-top: -4px;
+      opacity: 0.9;
     }
 
     /* HERO SZEKCIÓ */
     .hero {
       background: #0d0d0d; /* fekete */
       color: #f3e9dd;      /* bézs */
-      padding: 80px 20px 60px;
+      padding: 140px 20px 60px; /* nagyobb felső padding a logó miatt */
       text-align: center;
     }
 
@@ -30,6 +52,14 @@
     .hero p {
       font-size: 1rem;
       opacity: 0.8;
+    }
+
+    /* KAPCSOLAT */
+    .contact {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 1rem;
+      color: #333;
     }
 
     /* KATEGÓRIA GOMBOK */
@@ -90,6 +120,12 @@
 
 <body>
 
+  <!-- LOGÓ -->
+  <div class="logo">
+    Zsámbok Anna
+    <small>Fotográfus</small>
+  </div>
+
   <!-- HERO -->
   <div class="hero">
     <h1>Zsámbok Anna</h1>
@@ -97,6 +133,11 @@
   </div>
 
   <!-- KAPCSOLAT -->
+  <div class="contact">
+    Email: <strong>EMAIL_CÍMED</strong> • Telefon: <strong>TELEFON</strong> • Instagram: <strong>@INSTAGRAMOD</strong>
+  </div>
+
+  <!-- KATEGÓRIÁK -->
   <nav>
     <button onclick="filterImages('all')">Összes</button>
     <button onclick="filterImages('kezilabda')">Kézilabda</button>
@@ -105,7 +146,7 @@
     <button onclick="filterImages('eskuvo')">Esküvő</button>
   </nav>
 
-  <!-- GALÉRIA (random elrendezés) -->
+  <!-- GALÉRIA -->
   <section class="gallery">
 
     <!-- Kézilabda -->
