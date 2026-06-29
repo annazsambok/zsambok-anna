@@ -13,44 +13,24 @@
       color: #222;
     }
 
-    /* HERO SZEKCIÓ – név + ikonokkal elérhetőség */
+    /* HERO – csak a név, alacsonyabb */
     .hero {
-      background: #0d0d0d; /* fekete */
-      color: #f3e9dd;      /* bézs */
-      padding: 80px 20px 60px;
+      background: #0d0d0d;
+      color: #f3e9dd;
+      padding: 60px 20px 40px;
       text-align: center;
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
       font-family: "Brush Script MT", cursive;
-      margin-bottom: 20px;
+      margin: 0;
     }
 
-    /* Elérhetőségek ikonokkal */
-    .contact {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #f3e9dd;
-      display: inline-block;
-      text-align: center;
-    }
-
-    .contact span {
-      display: block; /* külön sorok, de középen */
-      margin: 4px 0;
-    }
-
-    @media (max-width: 600px) {
-      .contact {
-        font-size: 0.95rem; /* mobilon kisebb */
-      }
-    }
-
-    /* KATEGÓRIA GOMBOK – mobilbarát */
+    /* KATEGÓRIA GOMBOK */
     nav {
       text-align: center;
-      margin: 30px 0;
+      margin: 25px 0;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -61,24 +41,23 @@
       background: #0d0d0d;
       color: #f3e9dd;
       border: none;
-      padding: 12px 22px;
+      padding: 10px 20px;
       border-radius: 25px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 0.95rem;
       transition: all 0.3s ease;
-      min-width: 120px;
-      text-align: center;
+      min-width: 110px;
     }
 
     nav button:hover {
       background: #333;
     }
 
-    /* MASONRY GALÉRIA */
+    /* GALÉRIA */
     .gallery {
       column-count: 3;
       column-gap: 20px;
-      padding: 20px 40px 60px;
+      padding: 20px 40px 80px;
     }
 
     .gallery img {
@@ -86,8 +65,8 @@
       margin-bottom: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 18px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
       pointer-events: none;
+      transition: transform 0.3s ease;
     }
 
     .gallery img:hover {
@@ -95,14 +74,47 @@
     }
 
     @media (max-width: 900px) {
-      .gallery {
-        column-count: 2;
-      }
+      .gallery { column-count: 2; }
     }
 
     @media (max-width: 600px) {
-      .gallery {
-        column-count: 1;
+      .gallery { column-count: 1; }
+    }
+
+    /* LÁBLÉC – egy sor, fehér körvonalas ikonokkal */
+    footer {
+      background: #0d0d0d;
+      color: #f3e9dd;
+      padding: 12px 10px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    footer .footer-line {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
+    footer svg {
+      width: 16px;
+      height: 16px;
+      stroke: #f3e9dd;
+      fill: none;
+      stroke-width: 2;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 600px) {
+      footer {
+        font-size: 0.75rem;
+      }
+      footer svg {
+        width: 14px;
+        height: 14px;
       }
     }
   </style>
@@ -110,18 +122,12 @@
 
 <body>
 
-  <!-- HERO – név + ikonokkal elérhetőség -->
+  <!-- HERO -->
   <div class="hero">
     <h1>Zsámbok Anna</h1>
-
-    <div class="contact">
-      <span>📧 Email: <strong>zsambokanna@gmail.com</strong></span>
-      <span>📱 Telefon: <strong>+36 30 743 3533</strong></span>
-      <span>📷 Instagram: <strong>@zsambokanna</strong></span>
-    </div>
   </div>
 
-  <!-- KATEGÓRIÁK -->
+  <!-- MENÜ -->
   <nav>
     <button onclick="filterImages('all')">Összes</button>
     <button onclick="filterImages('kezilabda')">Kézilabda</button>
@@ -132,24 +138,52 @@
 
   <!-- GALÉRIA -->
   <section class="gallery">
-
-    <!-- Kézilabda -->
     <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="kezilabda">
     <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="kezilabda">
 
-    <!-- Diákolimpia -->
     <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="diakolimpia">
     <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="diakolimpia">
 
-    <!-- Rendezvény -->
     <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="rendezveny">
     <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="rendezveny">
 
-    <!-- Esküvő -->
     <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="eskuvo">
     <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="eskuvo">
-
   </section>
+
+  <!-- LÁBLÉC – egy sor, fehér körvonalas ikonokkal -->
+  <footer>
+    <div class="footer-line">
+
+      <!-- Email ikon -->
+      <span>
+        <svg viewBox="0 0 24 24">
+          <path d="M4 4h16v16H4z"/>
+          <path d="M4 4l8 8 8-8"/>
+        </svg>
+        zsambokanna@gmail.com
+      </span>
+
+      <!-- Telefon ikon -->
+      <span>
+        <svg viewBox="0 0 24 24">
+          <path d="M6 2l4 2-2 4c1 2 3 4 5 5l4-2 2 4c-1 1-3 3-5 3-6 0-12-6-12-12 0-2 2-4 3-5z"/>
+        </svg>
+        +36 30 743 3533
+      </span>
+
+      <!-- Instagram ikon -->
+      <span>
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17" cy="7" r="1.5"/>
+        </svg>
+        @zsambokanna
+      </span>
+
+    </div>
+  </footer>
 
   <script>
     function filterImages(category) {
