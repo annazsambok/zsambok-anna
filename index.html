@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zsámbok Anna – Sportfotó Portfólió</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background-color: #fff;
+      color: #222;
+    }
+    header {
+      text-align: center;
+      padding: 40px 0 20px;
+      font-size: 2rem;
+      font-weight: 600;
+      font-family: "Brush Script MT", cursive;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #555;
+      margin: 0 15px;
+      font-weight: 500;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 10px;
+      padding: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 4px;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+
+<body>
+  <header>Zsámbok Anna</header>
+  <nav>
+    <a href="#">Sportfotó</a>
+    <a href="#">Kézilabda</a>
+    <a href="#">Diákolimpia</a>
+    <a href="#">Rendezvények</a>
+    <a href="#">Esküvő</a>
+  </nav>
+
+  <section class="gallery">
+    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Kézilabda">
+    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Diákolimpia">
+    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Rendezvény">
+    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Esküvő">
+  </section>
+</body>
+</html>
