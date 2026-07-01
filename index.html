@@ -219,8 +219,31 @@
       font-weight: 400;
     }
 
+    .category-card.selected {
+      border: 2px solid var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(216,181,106,0.35);
+    }
+
+    .category-card.selected::before {
+      content: "Megnyitva";
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 5;
+      background: var(--gold);
+      color: #111;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
     .gallery-section {
       display: none;
+      scroll-margin-top: 96px;
       max-width: 1180px;
       margin: 34px auto 0;
       padding: 34px;
@@ -455,27 +478,27 @@
   <h2 class="section-title">Galériák</h2>
 
   <div class="category-grid">
-    <div class="category-card" onclick="toggleGallery('osszes')">
+    <div class="category-card" onclick="toggleGallery('osszes', this)">
       <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Összes kép">
       <h3>Összes kép</h3>
     </div>
 
-    <div class="category-card" onclick="toggleGallery('okc')">
+    <div class="category-card" onclick="toggleGallery('okc', this)">
       <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="ÓKC - Kézilabda">
       <h3>ÓKC - Kézilabda</h3>
     </div>
 
-    <div class="category-card" onclick="toggleGallery('diakolimpia')">
+    <div class="category-card" onclick="toggleGallery('diakolimpia', this)">
       <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Diákolimpia">
       <h3>Diákolimpia</h3>
     </div>
 
-    <div class="category-card" onclick="toggleGallery('eskuvo')">
+    <div class="category-card" onclick="toggleGallery('eskuvo', this)">
       <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Esküvő">
       <h3>Esküvő</h3>
     </div>
 
-    <div class="category-card" onclick="toggleGallery('rendezvenyek')">
+    <div class="category-card" onclick="toggleGallery('rendezvenyek', this)">
       <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Rendezvények">
       <h3>Rendezvények</h3>
     </div>
@@ -566,16 +589,28 @@
     document.getElementById("hamburger").classList.remove("active");
   }
 
-  function toggleGallery(id) {
-    const selected = document.getElementById(id);
-    const isOpen = selected.classList.contains("active");
+  function toggleGallery(id, card) {
+    const gallery = document.getElementById(id);
+    const isOpen = gallery.classList.contains("active");
 
     document.querySelectorAll(".gallery-section").forEach(section => {
       section.classList.remove("active");
     });
 
+    document.querySelectorAll(".category-card").forEach(item => {
+      item.classList.remove("selected");
+    });
+
     if (!isOpen) {
-      selected.classList.add("active");
+      gallery.classList.add("active");
+      card.classList.add("selected");
+
+      setTimeout(() => {
+        gallery.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 120);
     }
 
     closeMenu();
