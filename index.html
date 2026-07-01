@@ -1,164 +1,590 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zsámbok Anna – Fotográfus</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Zsámbok Anna Photography</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: "Helvetica Neue", Arial, sans-serif;
-      background: #f3e9dd;
-      color: #222;
+      background: #050505;
+      color: #f5f1e8;
     }
 
-    /* HERO – név + egy soros elérhetőség */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    :root {
+      --gold: #c9a24e;
+      --black: #050505;
+      --soft-white: #f5f1e8;
+      --muted: #cfcfcf;
+    }
+
+    /* HEADER */
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .navbar {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      letter-spacing: 3px;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.1;
+      z-index: 1001;
+    }
+
+    .logo span {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin-top: 4px;
+      color: var(--gold);
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .menu a {
+      position: relative;
+      opacity: 0.92;
+    }
+
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: 0.3s;
+    }
+
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      width: 32px;
+      height: 24px;
+      flex-direction: column;
+      justify-content: space-between;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: var(--soft-white);
+      transition: 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(11px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-11px) rotate(-45deg);
+    }
+
+    /* HERO */
+
     .hero {
-      background: #0d0d0d;
-      color: #f3e9dd;
-      padding: 70px 20px 45px;
-      text-align: center;
+      min-height: 94vh;
+      background:
+        linear-gradient(to right, rgba(0,0,0,0.84), rgba(0,0,0,0.25)),
+        linear-gradient(to top, #050505 0%, rgba(0,0,0,0) 34%),
+        url("https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      padding: 150px 7% 90px;
+    }
+
+    .hero-content {
+      max-width: 720px;
     }
 
     .hero h1 {
-      font-size: 3rem;
-      font-family: "Brush Script MT", cursive;
-      margin-bottom: 18px;
+      font-size: clamp(36px, 6vw, 74px);
+      line-height: 1.05;
+      margin: 0 0 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
     }
 
-    /* Egy soros elérhetőség ikonokkal */
-    .contact-line {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 22px;
-      flex-wrap: nowrap;
-      white-space: nowrap;
-      font-size: 0.85rem;
-      color: #f3e9dd;
+    .hero p {
+      font-size: 15px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #e5e5e5;
+      margin: 0 0 34px;
     }
 
-    .contact-line span {
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    .btn {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.75);
+      padding: 14px 24px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: 0.3s;
     }
 
-    .contact-line svg {
-      width: 16px;
-      height: 16px;
-      stroke: #f3e9dd;
-      fill: none;
-      stroke-width: 2;
+    .btn:hover {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
     }
 
-    @media (max-width: 600px) {
-      .contact-line {
-        font-size: 0.75rem;
-        gap: 16px;
-      }
-      .contact-line svg {
-        width: 14px;
-        height: 14px;
-      }
+    /* GENERAL */
+
+    section {
+      padding: 72px 7%;
     }
 
-    /* KATEGÓRIA GOMBOK */
-    nav {
+    .section-title {
       text-align: center;
-      margin: 25px 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
+      font-size: 24px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin: 0 0 38px;
+      font-weight: 400;
     }
 
-    nav button {
-      background: #0d0d0d;
-      color: #f3e9dd;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 25px;
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 58px;
+      height: 1px;
+      background: var(--gold);
+      margin: 14px auto 0;
+    }
+
+    /* CATEGORIES */
+
+    .category-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .category-card {
+      height: 275px;
+      position: relative;
+      overflow: hidden;
       cursor: pointer;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-      min-width: 110px;
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
-    nav button:hover {
-      background: #333;
-    }
-
-    /* GALÉRIA */
-    .gallery {
-      column-count: 3;
-      column-gap: 20px;
-      padding: 20px 40px 80px;
-    }
-
-    .gallery img {
+    .category-card img {
       width: 100%;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.15);
-      pointer-events: none;
-      transition: transform 0.3s ease;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease, filter 0.5s ease;
+      filter: brightness(0.68);
     }
 
-    .gallery img:hover {
-      transform: scale(1.02);
+    .category-card:hover img {
+      transform: scale(1.08);
+      filter: brightness(0.95);
     }
 
-    @media (max-width: 900px) {
-      .gallery { column-count: 2; }
+    .category-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88), transparent 58%);
     }
 
-    @media (max-width: 600px) {
-      .gallery { column-count: 1; }
+    .category-card h3 {
+      position: absolute;
+      left: 22px;
+      bottom: 22px;
+      z-index: 2;
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 400;
     }
 
-    /* RÓLAM SZEKCIÓ */
-    .about {
+    /* GALLERIES */
+
+    #galeria {
+      padding-top: 20px;
+    }
+
+    .gallery-section {
       display: none;
-      padding: 40px 20px 80px;
-      max-width: 1000px;
+      max-width: 1180px;
       margin: 0 auto;
     }
 
-    .about-content {
+    .gallery-section.active {
+      display: block;
+    }
+
+    .gallery-header {
       display: flex;
-      gap: 40px;
-      align-items: flex-start;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 26px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      padding-bottom: 14px;
+    }
+
+    .gallery-header h2 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .gallery-header button {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 10px 16px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .photo-grid {
+      columns: 3 280px;
+      column-gap: 18px;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      margin-bottom: 18px;
+      border-radius: 2px;
+      break-inside: avoid;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .photo-grid img:hover {
+      transform: scale(1.015);
+      filter: brightness(1.15);
+    }
+
+    /* LATEST */
+
+    .latest-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .latest-grid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      filter: brightness(0.88);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .latest-grid img:hover {
+      filter: brightness(1.1);
+    }
+
+    /* ABOUT */
+
+    .about {
+      background: #0b0b0b;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 28px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin-top: 0;
+    }
+
+    .about-text h2::after {
+      content: "";
+      display: block;
+      width: 45px;
+      height: 1px;
+      background: var(--gold);
+      margin-top: 12px;
+    }
+
+    .about-text p {
+      line-height: 1.8;
+      color: #d7d7d7;
+      font-size: 15px;
     }
 
     .about img {
-      width: 320px;
-      height: 480px;
+      width: 100%;
+      max-height: 520px;
       object-fit: cover;
-      border-radius: 10px;
-      background: #ddd; /* keret helye */
+      filter: grayscale(100%) brightness(0.8);
     }
 
-    .about-text {
-      max-width: 500px;
-      font-size: 1rem;
-      line-height: 1.6;
+    /* FOOTER */
+
+    footer {
+      padding: 42px 7%;
+      background: #030303;
+      border-top: 1px solid rgba(255,255,255,0.08);
     }
 
-    @media (max-width: 700px) {
-      .about-content {
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .footer-inner strong {
+      color: var(--soft-white);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* LIGHTBOX */
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.94);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .lightbox img {
+      max-width: 95%;
+      max-height: 88vh;
+      object-fit: contain;
+    }
+
+    .lightbox span {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 42px;
+      cursor: pointer;
+      color: white;
+    }
+
+    /* TABLET */
+
+    @media (max-width: 1000px) {
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .latest-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 760px) {
+      .navbar {
+        padding: 16px 20px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 78%;
+        max-width: 340px;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.97);
         flex-direction: column;
+        justify-content: center;
         align-items: center;
-        text-align: center;
+        gap: 26px;
+        transition: 0.35s ease;
+        border-left: 1px solid rgba(255,255,255,0.1);
       }
+
+      .menu.active {
+        right: 0;
+      }
+
+      .menu a {
+        font-size: 14px;
+      }
+
+      .hero {
+        min-height: 82vh;
+        padding: 135px 24px 70px;
+        background-position: center;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+        line-height: 1.08;
+      }
+
+      .hero p {
+        font-size: 12px;
+        letter-spacing: 3px;
+      }
+
+      section {
+        padding: 58px 22px;
+      }
+
+      .section-title {
+        font-size: 20px;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .category-card {
+        height: 230px;
+      }
+
+      .gallery-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .gallery-header h2 {
+        font-size: 19px;
+      }
+
+      .photo-grid {
+        columns: 1;
+      }
+
+      .latest-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .latest-grid img {
+        height: 150px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
       .about img {
-        width: 260px;
-        height: 380px;
+        order: -1;
+        max-height: 360px;
       }
-      .about-text {
-        max-width: 90%;
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .logo {
+        font-size: 15px;
+      }
+
+      .logo span {
+        font-size: 10px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .btn {
+        padding: 13px 18px;
+        font-size: 11px;
+      }
+
+      .latest-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .latest-grid img {
+        height: 210px;
       }
     }
   </style>
@@ -166,99 +592,205 @@
 
 <body>
 
-  <!-- HERO -->
-  <div class="hero">
-    <h1>Zsámbok Anna</h1>
+<header>
+  <div class="navbar">
+    <a href="#" class="logo">
+      ANNA ZSAMBOK
+      <span>PHOTOGRAPHY</span>
+    </a>
 
-    <div class="contact-line">
-      <span>
-        <svg viewBox="0 0 24 24">
-          <path d="M4 4h16v16H4z"/>
-          <path d="M4 4l8 8 8-8"/>
-        </svg>
-        zsambokanna@gmail.com
-      </span>
+    <nav class="menu" id="menu">
+      <a href="#" onclick="closeMenu()">Főoldal</a>
+      <a href="#kategoriak" onclick="closeMenu()">Galériák</a>
+      <a href="#rolam" onclick="closeMenu()">Rólam</a>
+      <a href="#kapcsolat" onclick="closeMenu()">Kapcsolat</a>
+    </nav>
 
-      <span>
-        <svg viewBox="0 0 24 24">
-          <path d="M6 2l4 2-2 4c1 2 3 4 5 5l4-2 2 4c-1 1-3 3-5 3-6 0-12-6-12-12 0-2 2-4 3-5z"/>
-        </svg>
-        +36 30 743 3533
-      </span>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
 
-      <span>
-        <svg viewBox="0 0 24 24">
-          <rect x="3" y="3" width="18" height="18" rx="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="17" cy="7" r="1.5"/>
-        </svg>
-        zsambokanna
-      </span>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Pillanatok,<br>amik örökre maradnak</h1>
+    <p>Sport • Esküvő • Rendezvények</p>
+    <a href="#kategoriak" class="btn">Nézd meg a képeim</a>
+  </div>
+</section>
+
+<section id="kategoriak">
+  <h2 class="section-title">Galériák</h2>
+
+  <div class="category-grid">
+    <div class="category-card" onclick="showGallery('okc')">
+      <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="ÓKC - Kézilabda">
+      <h3>ÓKC - Kézilabda</h3>
+    </div>
+
+    <div class="category-card" onclick="showGallery('diakolimpia')">
+      <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Diákolimpia">
+      <h3>Diákolimpia</h3>
+    </div>
+
+    <div class="category-card" onclick="showGallery('eskuvo')">
+      <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Esküvő">
+      <h3>Esküvő</h3>
+    </div>
+
+    <div class="category-card" onclick="showGallery('rendezvenyek')">
+      <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Rendezvények">
+      <h3>Rendezvények</h3>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
+  <div id="okc" class="gallery-section">
+    <div class="gallery-header">
+      <h2>ÓKC - Kézilabda</h2>
+      <button onclick="hideGalleries()">Vissza</button>
+    </div>
+    <div class="photo-grid">
+      <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+      <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+      <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
     </div>
   </div>
 
-  <!-- MENÜ -->
-  <nav>
-    <button onclick="filterImages('all')">Összes</button>
-    <button onclick="filterImages('kezilabda')">Kézilabda</button>
-    <button onclick="filterImages('diakolimpia')">Diákolimpia</button>
-    <button onclick="filterImages('rendezveny')">Rendezvények</button>
-    <button onclick="filterImages('eskuvo')">Esküvő</button>
-    <button onclick="showAbout()">Rólam</button>
-  </nav>
-
-  <!-- GALÉRIA -->
-  <section class="gallery" id="gallery">
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="kezilabda">
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="kezilabda">
-
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="diakolimpia">
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="diakolimpia">
-
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="rendezveny">
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="rendezveny">
-
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="eskuvo">
-    <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" class="eskuvo">
-  </section>
-
-  <!-- RÓLAM -->
-  <section class="about" id="about">
-    <div class="about-content">
-
-      <!-- PORTRÉ KERET -->
-      <img src="" alt="Portré helye – ide töltsd fel a képed">
-
-      <!-- BEMUTATKOZÁS -->
-      <div class="about-text">
-        <p>2018-ban, gimnazistaként kezdtem el fotózni Egerben, először iskolai rendezvényeken. Később önkéntesként fotóztam a Diákolimpia országos döntőjén, majd egyre több egri eseményen is jelen voltam fotósként.</p>
-
-        <p>Az egyetem alatt már az MDSZ hivatalos szerződésével fotóztam a Diákolimpia országos döntőit, és 2025 óta az ÓAM-ÓZDI KC kézilabda csapat hivatalos sajtós-médiása vagyok: fotózom a mérkőzéseket és kezelem a közösségi média felületeiket.</p>
-
-        <p>Az elmúlt időszakban esküvőket is fotóztam, és egyre jobban érdekel a koncertfotózás, valamint mindenféle rendezvény- és sportfotózás. Ez a munkám, a hobbim, a szenvedélyem — a fotózás az életem része.</p>
-
-        <p>Jelenleg egy Canon R6 Mark II géppel dolgozom.</p>
-      </div>
-
+  <div id="diakolimpia" class="gallery-section">
+    <div class="gallery-header">
+      <h2>Diákolimpia</h2>
+      <button onclick="hideGalleries()">Vissza</button>
     </div>
-  </section>
+    <div class="photo-grid">
+      <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+      <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+    </div>
+  </div>
 
-  <script>
-    function filterImages(category) {
-      document.getElementById("about").style.display = "none";
-      document.getElementById("gallery").style.display = "block";
+  <div id="eskuvo" class="gallery-section">
+    <div class="gallery-header">
+      <h2>Esküvő</h2>
+      <button onclick="hideGalleries()">Vissza</button>
+    </div>
+    <div class="photo-grid">
+      <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+      <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+    </div>
+  </div>
 
-      const images = document.querySelectorAll('.gallery img');
-      images.forEach(img => {
-        img.style.display = (category === 'all' || img.classList.contains(category)) ? 'block' : 'none';
-      });
+  <div id="rendezvenyek" class="gallery-section">
+    <div class="gallery-header">
+      <h2>Rendezvények</h2>
+      <button onclick="hideGalleries()">Vissza</button>
+    </div>
+    <div class="photo-grid">
+      <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+      <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Legújabb képeim</h2>
+
+  <div class="latest-grid">
+    <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+    <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+    <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+    <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+    <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+  </div>
+</section>
+
+<section class="about" id="rolam">
+  <div class="about-text">
+    <h2>Rólam</h2>
+
+    <p>2018-ban, gimnazistaként kezdtem el fotózni Egerben, először iskolai rendezvényeken. Később önkéntesként fotóztam a Diákolimpia országos döntőjén, majd egyre több eseményen is jelen voltam fotósként.</p>
+
+    <p>2025 óta az ÓAM-Ózdi KC kézilabda csapat hivatalos sajtós-médiása vagyok: fotózom a mérkőzéseket és kezelem a közösségi média felületeiket.</p>
+
+    <p>Esküvőket, rendezvényeket és sporteseményeket is fotózok. A célom, hogy a képeim ne csak dokumentáljanak, hanem visszaadják az adott pillanat hangulatát és energiáját.</p>
+  </div>
+
+  <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Zsámbok Anna portré">
+</section>
+
+<footer id="kapcsolat">
+  <div class="footer-inner">
+    <div>
+      <strong>Kapcsolat</strong>
+    </div>
+
+    <div>
+      zsambokanna@gmail.com
+    </div>
+
+    <div>
+      +36 30 743 3533
+    </div>
+
+    <div>
+      Instagram: zsambokanna
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span>&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+    document.getElementById("hamburger").classList.toggle("active");
+  }
+
+  function closeMenu() {
+    document.getElementById("menu").classList.remove("active");
+    document.getElementById("hamburger").classList.remove("active");
+  }
+
+  function showGallery(id) {
+    document.querySelectorAll(".gallery-section").forEach(section => {
+      section.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+    document.getElementById("galeria").scrollIntoView({ behavior: "smooth" });
+    closeMenu();
+  }
+
+  function hideGalleries() {
+    document.querySelectorAll(".gallery-section").forEach(section => {
+      section.classList.remove("active");
+    });
+
+    document.getElementById("kategoriak").scrollIntoView({ behavior: "smooth" });
+  }
+
+  function openLightbox(src) {
+    document.getElementById("lightbox-img").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+  }
+
+  function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+  }
+
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+      closeLightbox();
+      closeMenu();
     }
-
-    function showAbout() {
-      document.getElementById("gallery").style.display = "none";
-      document.getElementById("about").style.display = "block";
-    }
-  </script>
+  });
+</script>
 
 </body>
 </html>
