@@ -4,16 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Zsámbok Anna Photography</title>
+  <title>Zsámbok Anna fotográfus</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -22,33 +18,31 @@
       color: #f5f1e8;
     }
 
+    :root {
+      --gold: #c9a24e;
+      --white: #f5f1e8;
+      --muted: #cfcfcf;
+      --image: url("https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg");
+    }
+
     a {
       color: inherit;
       text-decoration: none;
     }
 
     img {
-      max-width: 100%;
       display: block;
+      width: 100%;
     }
-
-    :root {
-      --gold: #c9a24e;
-      --black: #050505;
-      --soft-white: #f5f1e8;
-      --muted: #cfcfcf;
-    }
-
-    /* HEADER */
 
     header {
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(0, 0, 0, 0.88);
+      background: rgba(0,0,0,0.88);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     .navbar {
@@ -56,72 +50,59 @@
       margin: 0 auto;
       padding: 18px 24px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
 
     .logo {
-      letter-spacing: 3px;
-      font-size: 18px;
+      letter-spacing: 2px;
+      font-size: 17px;
       font-weight: 500;
-      line-height: 1.1;
-      z-index: 1001;
+      line-height: 1.2;
+      text-transform: uppercase;
     }
 
     .logo span {
       display: block;
-      font-size: 11px;
-      letter-spacing: 2px;
-      margin-top: 4px;
       color: var(--gold);
+      font-size: 12px;
+      margin-top: 3px;
+      text-transform: lowercase;
+      letter-spacing: 2px;
     }
 
     .menu {
       display: flex;
-      align-items: center;
       gap: 24px;
+      text-transform: uppercase;
       font-size: 12px;
       letter-spacing: 1.5px;
-      text-transform: uppercase;
     }
 
     .menu a {
-      position: relative;
-      opacity: 0.92;
+      opacity: 0.9;
     }
 
-    .menu a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -8px;
-      width: 0;
-      height: 1px;
-      background: var(--gold);
-      transition: 0.3s;
-    }
-
-    .menu a:hover::after {
-      width: 100%;
+    .menu a:hover {
+      color: var(--gold);
     }
 
     .hamburger {
       display: none;
       width: 32px;
       height: 24px;
+      border: 0;
+      background: none;
+      cursor: pointer;
       flex-direction: column;
       justify-content: space-between;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      z-index: 1001;
+      padding: 0;
     }
 
     .hamburger span {
       display: block;
       height: 2px;
-      width: 100%;
-      background: var(--soft-white);
+      background: var(--white);
       transition: 0.3s;
     }
 
@@ -137,14 +118,12 @@
       transform: translateY(-11px) rotate(-45deg);
     }
 
-    /* HERO */
-
     .hero {
       min-height: 94vh;
       background:
-        linear-gradient(to right, rgba(0,0,0,0.84), rgba(0,0,0,0.25)),
-        linear-gradient(to top, #050505 0%, rgba(0,0,0,0) 34%),
-        url("https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg");
+        linear-gradient(to right, rgba(0,0,0,0.86), rgba(0,0,0,0.24)),
+        linear-gradient(to top, #050505 0%, rgba(0,0,0,0) 35%),
+        var(--image);
       background-size: cover;
       background-position: center;
       display: flex;
@@ -160,8 +139,8 @@
       font-size: clamp(36px, 6vw, 74px);
       line-height: 1.05;
       margin: 0 0 20px;
-      letter-spacing: 2px;
       text-transform: uppercase;
+      letter-spacing: 2px;
       font-weight: 500;
     }
 
@@ -170,7 +149,7 @@
       letter-spacing: 4px;
       text-transform: uppercase;
       color: #e5e5e5;
-      margin: 0 0 34px;
+      margin-bottom: 34px;
     }
 
     .btn {
@@ -188,8 +167,6 @@
       color: #000;
       border-color: var(--gold);
     }
-
-    /* GENERAL */
 
     section {
       padding: 72px 7%;
@@ -213,31 +190,28 @@
       margin: 14px auto 0;
     }
 
-    /* CATEGORIES */
-
     .category-grid {
       max-width: 1180px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
     }
 
     .category-card {
-      height: 275px;
+      height: 260px;
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      background: #111;
       border: 1px solid rgba(255,255,255,0.08);
+      background: #111;
     }
 
     .category-card img {
-      width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease, filter 0.5s ease;
-      filter: brightness(0.68);
+      filter: brightness(0.65);
+      transition: 0.45s ease;
     }
 
     .category-card:hover img {
@@ -249,63 +223,50 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.88), transparent 58%);
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent 58%);
     }
 
     .category-card h3 {
       position: absolute;
-      left: 22px;
-      bottom: 22px;
       z-index: 2;
+      left: 18px;
+      bottom: 20px;
       margin: 0;
-      font-size: 18px;
-      letter-spacing: 2px;
+      font-size: 16px;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
       font-weight: 400;
-    }
-
-    /* GALLERIES */
-
-    #galeria {
-      padding-top: 20px;
     }
 
     .gallery-section {
       display: none;
       max-width: 1180px;
-      margin: 0 auto;
+      margin: 34px auto 0;
+      animation: fadeDown 0.35s ease;
     }
 
     .gallery-section.active {
       display: block;
     }
 
-    .gallery-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 26px;
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-      padding-bottom: 14px;
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .gallery-header h2 {
-      margin: 0;
-      font-size: 22px;
+    .gallery-title {
+      font-size: 20px;
       letter-spacing: 3px;
       text-transform: uppercase;
       font-weight: 400;
-    }
-
-    .gallery-header button {
-      background: transparent;
+      margin: 0 0 22px;
       color: var(--gold);
-      border: 1px solid var(--gold);
-      padding: 10px 16px;
-      cursor: pointer;
-      letter-spacing: 1px;
-      text-transform: uppercase;
     }
 
     .photo-grid {
@@ -314,7 +275,6 @@
     }
 
     .photo-grid img {
-      width: 100%;
       margin-bottom: 18px;
       border-radius: 2px;
       break-inside: avoid;
@@ -324,33 +284,8 @@
 
     .photo-grid img:hover {
       transform: scale(1.015);
-      filter: brightness(1.15);
+      filter: brightness(1.14);
     }
-
-    /* LATEST */
-
-    .latest-grid {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-    }
-
-    .latest-grid img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      filter: brightness(0.88);
-      transition: 0.3s;
-      cursor: pointer;
-    }
-
-    .latest-grid img:hover {
-      filter: brightness(1.1);
-    }
-
-    /* ABOUT */
 
     .about {
       background: #0b0b0b;
@@ -358,6 +293,12 @@
       grid-template-columns: 1fr 1.15fr;
       gap: 50px;
       align-items: center;
+    }
+
+    .about img {
+      max-height: 520px;
+      object-fit: cover;
+      filter: grayscale(100%) brightness(0.82);
     }
 
     .about-text h2 {
@@ -383,15 +324,6 @@
       font-size: 15px;
     }
 
-    .about img {
-      width: 100%;
-      max-height: 520px;
-      object-fit: cover;
-      filter: grayscale(100%) brightness(0.8);
-    }
-
-    /* FOOTER */
-
     footer {
       padding: 42px 7%;
       background: #030303;
@@ -410,12 +342,10 @@
     }
 
     .footer-inner strong {
-      color: var(--soft-white);
+      color: var(--white);
       letter-spacing: 2px;
       text-transform: uppercase;
     }
-
-    /* LIGHTBOX */
 
     .lightbox {
       display: none;
@@ -443,19 +373,11 @@
       color: white;
     }
 
-    /* TABLET */
-
-    @media (max-width: 1000px) {
+    @media (max-width: 1100px) {
       .category-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .latest-grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
-
-    /* MOBILE */
 
     @media (max-width: 760px) {
       .navbar {
@@ -473,7 +395,7 @@
         width: 78%;
         max-width: 340px;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.97);
+        background: rgba(0,0,0,0.97);
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -497,8 +419,7 @@
       }
 
       .hero h1 {
-        font-size: 38px;
-        line-height: 1.08;
+        font-size: 34px;
       }
 
       .hero p {
@@ -510,38 +431,16 @@
         padding: 58px 22px;
       }
 
-      .section-title {
-        font-size: 20px;
-      }
-
       .category-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
       }
 
       .category-card {
         height: 230px;
       }
 
-      .gallery-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .gallery-header h2 {
-        font-size: 19px;
-      }
-
       .photo-grid {
         columns: 1;
-      }
-
-      .latest-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .latest-grid img {
-        height: 150px;
       }
 
       .about {
@@ -563,7 +462,7 @@
 
     @media (max-width: 430px) {
       .logo {
-        font-size: 15px;
+        font-size: 14px;
       }
 
       .logo span {
@@ -571,20 +470,12 @@
       }
 
       .hero h1 {
-        font-size: 32px;
+        font-size: 30px;
       }
 
       .btn {
         padding: 13px 18px;
         font-size: 11px;
-      }
-
-      .latest-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .latest-grid img {
-        height: 210px;
       }
     }
   </style>
@@ -595,8 +486,8 @@
 <header>
   <div class="navbar">
     <a href="#" class="logo">
-      ANNA ZSAMBOK
-      <span>PHOTOGRAPHY</span>
+      Zsámbok Anna
+      <span>fotográfus</span>
     </a>
 
     <nav class="menu" id="menu">
@@ -626,34 +517,46 @@
   <h2 class="section-title">Galériák</h2>
 
   <div class="category-grid">
-    <div class="category-card" onclick="showGallery('okc')">
+    <div class="category-card" onclick="toggleGallery('osszes')">
+      <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Összes kép">
+      <h3>Összes kép</h3>
+    </div>
+
+    <div class="category-card" onclick="toggleGallery('okc')">
       <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="ÓKC - Kézilabda">
       <h3>ÓKC - Kézilabda</h3>
     </div>
 
-    <div class="category-card" onclick="showGallery('diakolimpia')">
+    <div class="category-card" onclick="toggleGallery('diakolimpia')">
       <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Diákolimpia">
       <h3>Diákolimpia</h3>
     </div>
 
-    <div class="category-card" onclick="showGallery('eskuvo')">
+    <div class="category-card" onclick="toggleGallery('eskuvo')">
       <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Esküvő">
       <h3>Esküvő</h3>
     </div>
 
-    <div class="category-card" onclick="showGallery('rendezvenyek')">
+    <div class="category-card" onclick="toggleGallery('rendezvenyek')">
       <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Rendezvények">
       <h3>Rendezvények</h3>
     </div>
   </div>
-</section>
 
-<section id="galeria">
-  <div id="okc" class="gallery-section">
-    <div class="gallery-header">
-      <h2>ÓKC - Kézilabda</h2>
-      <button onclick="hideGalleries()">Vissza</button>
+  <div id="osszes" class="gallery-section">
+    <h3 class="gallery-title">Összes kép</h3>
+    <div class="photo-grid">
+      <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+      <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+      <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+      <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+      <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
+      <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
     </div>
+  </div>
+
+  <div id="okc" class="gallery-section">
+    <h3 class="gallery-title">ÓKC - Kézilabda</h3>
     <div class="photo-grid">
       <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
       <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
@@ -662,10 +565,7 @@
   </div>
 
   <div id="diakolimpia" class="gallery-section">
-    <div class="gallery-header">
-      <h2>Diákolimpia</h2>
-      <button onclick="hideGalleries()">Vissza</button>
-    </div>
+    <h3 class="gallery-title">Diákolimpia</h3>
     <div class="photo-grid">
       <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
       <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
@@ -673,10 +573,7 @@
   </div>
 
   <div id="eskuvo" class="gallery-section">
-    <div class="gallery-header">
-      <h2>Esküvő</h2>
-      <button onclick="hideGalleries()">Vissza</button>
-    </div>
+    <h3 class="gallery-title">Esküvő</h3>
     <div class="photo-grid">
       <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
       <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
@@ -684,26 +581,11 @@
   </div>
 
   <div id="rendezvenyek" class="gallery-section">
-    <div class="gallery-header">
-      <h2>Rendezvények</h2>
-      <button onclick="hideGalleries()">Vissza</button>
-    </div>
+    <h3 class="gallery-title">Rendezvények</h3>
     <div class="photo-grid">
       <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
       <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
     </div>
-  </div>
-</section>
-
-<section>
-  <h2 class="section-title">Legújabb képeim</h2>
-
-  <div class="latest-grid">
-    <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
-    <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
-    <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
-    <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
-    <img onclick="openLightbox(this.src)" src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="">
   </div>
 </section>
 
@@ -718,26 +600,15 @@
     <p>Esküvőket, rendezvényeket és sporteseményeket is fotózok. A célom, hogy a képeim ne csak dokumentáljanak, hanem visszaadják az adott pillanat hangulatát és energiáját.</p>
   </div>
 
-  <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Zsámbok Anna portré">
+  <img src="https://res.cloudinary.com/dgvyhfj3x/image/upload/v1782749164/186A1384_aqhwax.jpg" alt="Zsámbok Anna fotográfus">
 </section>
 
 <footer id="kapcsolat">
   <div class="footer-inner">
-    <div>
-      <strong>Kapcsolat</strong>
-    </div>
-
-    <div>
-      zsambokanna@gmail.com
-    </div>
-
-    <div>
-      +36 30 743 3533
-    </div>
-
-    <div>
-      Instagram: zsambokanna
-    </div>
+    <div><strong>Kapcsolat</strong></div>
+    <div>zsambokanna@gmail.com</div>
+    <div>+36 30 743 3533</div>
+    <div>Instagram: zsambokanna</div>
   </div>
 </footer>
 
@@ -757,22 +628,19 @@
     document.getElementById("hamburger").classList.remove("active");
   }
 
-  function showGallery(id) {
+  function toggleGallery(id) {
+    const selected = document.getElementById(id);
+    const isOpen = selected.classList.contains("active");
+
     document.querySelectorAll(".gallery-section").forEach(section => {
       section.classList.remove("active");
     });
 
-    document.getElementById(id).classList.add("active");
-    document.getElementById("galeria").scrollIntoView({ behavior: "smooth" });
+    if (!isOpen) {
+      selected.classList.add("active");
+    }
+
     closeMenu();
-  }
-
-  function hideGalleries() {
-    document.querySelectorAll(".gallery-section").forEach(section => {
-      section.classList.remove("active");
-    });
-
-    document.getElementById("kategoriak").scrollIntoView({ behavior: "smooth" });
   }
 
   function openLightbox(src) {
